@@ -17,11 +17,10 @@ public class TicTacToe extends Application {
         primaryStage.setResizable(false);
         primaryStage.initStyle(StageStyle.UTILITY);
 
+
         //label
         ImageView croix = new ImageView("exercice2/Croix.png");
-        Label label_croix = new Label("Croix", croix);
         ImageView rond = new ImageView("exercice2/Rond.png");
-        Label label_rond = new Label("Rond", rond);
 
         Random random = new Random();
         int nombre = 0;
@@ -32,16 +31,24 @@ public class TicTacToe extends Application {
             for(int j = 0; j < 3; j++){
                 nombre = random.nextInt(3);
                 if(nombre == 0){
-                    gridPane.add(label_croix, i, j);
+                    gridPane.add(new Label("Croix", croix), i, j);
+                    System.out.println("croix at poition " + i + " " + j + "");
                 }else if(nombre == 1){
-                    gridPane.add(label_rond, i, j);
+                    gridPane.add(new Label("Rond", rond), i, j);
+                    System.out.println("rond at poition " + i + " " + j + "");
                 }else{
                     gridPane.add(new Label(), i, j);
+                    System.out.println("vide at poition " + i + " " + j + "");
                 }
             }
         }
 
+
+
         primaryStage.setScene(new javafx.scene.Scene(gridPane, 300, 300));
+        System.out.println("primaryStage.show();");
+
+
         primaryStage.show();
     }
 }
