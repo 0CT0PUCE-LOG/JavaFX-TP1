@@ -29,8 +29,10 @@ public class FenetreLogiciel extends Application {
         borderPane.setTop(menuBar);
 
         Label bottom = new Label("Ceci est un label de bas de page");
+        bottom.setAlignment(javafx.geometry.Pos.CENTER);
         Separator separator1 = new Separator(Orientation.HORIZONTAL);
         VBox vBox1 = new VBox(separator1, bottom);
+        vBox1.setAlignment(javafx.geometry.Pos.CENTER);
         borderPane.setBottom(vBox1);
 
         Label boutons = new Label("Boutons :");
@@ -40,6 +42,7 @@ public class FenetreLogiciel extends Application {
         VBox vBox = new VBox(boutons, b1, b2, b3);
         vBox.setAlignment(javafx.geometry.Pos.CENTER);
         Separator separator = new Separator(Orientation.VERTICAL);
+        vBox.setSpacing(10);
         HBox hBox = new HBox(vBox, separator);
 
         borderPane.setLeft(hBox);
@@ -62,11 +65,16 @@ public class FenetreLogiciel extends Application {
         Button submit = new Button("Submit");
         Button cancel = new Button("Cancel");
         HBox hBox1 = new HBox(submit, cancel);
-        gridPane.add(hBox1, 1, 3);
+        hBox1.setSpacing(10);
+        hBox1.setAlignment(javafx.geometry.Pos.CENTER);
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
         gridPane.setAlignment(javafx.geometry.Pos.CENTER);
 
-
-        borderPane.setCenter(gridPane);
+        VBox MIDDLE = new VBox(gridPane,hBox1);
+        MIDDLE.setSpacing(10);
+        MIDDLE.setAlignment(javafx.geometry.Pos.CENTER);
+        borderPane.setCenter(MIDDLE);
 
         primaryStage.setScene(new javafx.scene.Scene(borderPane, 300, 250));
         primaryStage.show();
