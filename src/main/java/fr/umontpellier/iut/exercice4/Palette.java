@@ -25,6 +25,41 @@ public class Palette extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        HBox hBox = new HBox();
+        Button vert = new Button("Vert");
+        Button rouge = new Button("Rouge");
+        Button bleu = new Button("Bleu");
+        hBox.getChildren().addAll(vert, rouge, bleu);
+        hBox.setAlignment(javafx.geometry.Pos.CENTER);
+
+        BorderPane rectangle = new BorderPane();
+        rectangle.setPrefSize(400, 200);
+        Label topLabel = new Label();
+        HBox topHBox = new HBox();
+        topHBox.getChildren().add(topLabel);
+        topHBox.setAlignment(javafx.geometry.Pos.CENTER);
+        Pane panneau = new Pane();
+        rectangle.setCenter(panneau);
+        rectangle.setTop(topHBox);
+        rectangle.setBottom(hBox);
+
+        vert.setOnAction(event -> {
+            panneau.setStyle("-fx-background-color: green");
+            topLabel.setText("Vert choisi " + ++nbVert + " fois");
+        });
+
+        rouge.setOnAction(event -> {
+            panneau.setStyle("-fx-background-color: red");
+            topLabel.setText("Rouge choisi " + ++nbRouge + " fois");
+        });
+
+        bleu.setOnAction(event -> {
+            panneau.setStyle("-fx-background-color: blue");
+            topLabel.setText("Bleu choisi " + ++nbBleu + " fois");
+        });
+
+        primaryStage.setScene(new javafx.scene.Scene(rectangle));
         primaryStage.show();
     }
 }
