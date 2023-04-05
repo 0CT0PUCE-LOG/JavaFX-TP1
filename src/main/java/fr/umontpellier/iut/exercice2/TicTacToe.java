@@ -15,37 +15,41 @@ public class TicTacToe extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Tic Tac Toe");
         primaryStage.setResizable(false);
-        primaryStage.initStyle(StageStyle.UTILITY);
+        //primaryStage.initStyle(StageStyle.UTILITY);
 
-
-        //label
-        ImageView croix = new ImageView("exercice2/Croix.png");
-        ImageView rond = new ImageView("exercice2/Rond.png");
 
         Random random = new Random();
         int nombre = 0;
 
         GridPane gridPane = new GridPane();
+        gridPane.setGridLinesVisible(true);
 
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 3; j++){
+        for(int i =0;i<3;i++){
+            for(int j=0;j<3;j++){
                 nombre = random.nextInt(3);
-                if(nombre == 0){
-                    gridPane.add(new Label("Croix", croix), i, j);
-                    System.out.println("croix at poition " + i + " " + j + "");
-                }else if(nombre == 1){
-                    gridPane.add(new Label("Rond", rond), i, j);
-                    System.out.println("rond at poition " + i + " " + j + "");
-                }else{
-                    gridPane.add(new Label(), i, j);
-                    System.out.println("vide at poition " + i + " " + j + "");
+                System.out.println(nombre);
+                Label label = new Label();
+                if(nombre == 1){
+                    System.out.println("croix");
+                    label.setGraphic(new ImageView("exercice2/Croix.png"));
+                    gridPane.add(label,i,j);
+                }else if(nombre == 2){
+                    System.out.println("rond");
+                    label.setGraphic(new ImageView("exercice2/Rond.png"));
+                    gridPane.add(label,i,j);
+                }
+                else{
+                    label.setGraphic(new ImageView("exercice2/Vide.png"));
+                    gridPane.add(label,i,j);
                 }
             }
         }
 
 
 
-        primaryStage.setScene(new javafx.scene.Scene(gridPane, 300, 300));
+
+
+        primaryStage.setScene(new javafx.scene.Scene(gridPane));
         System.out.println("primaryStage.show();");
 
 
