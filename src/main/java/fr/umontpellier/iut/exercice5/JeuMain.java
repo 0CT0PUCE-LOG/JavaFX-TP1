@@ -50,6 +50,7 @@ public class JeuMain extends Application {
     private void deplacer(Personnage j1, Personnage j2) {
         scene.setOnKeyPressed((KeyEvent event) -> {
             switch (event.getCode()) {
+                //j1
                 case LEFT:
                     j1.deplacerAGauche();
                     break;
@@ -62,10 +63,26 @@ public class JeuMain extends Application {
                 case DOWN:
                     j1.deplacerEnBas(scene.getWidth());
                     break;
+                //j2
+                case Z:
+                    j2.deplacerEnHaut();
+                    break;
+                case Q:
+                    j2.deplacerAGauche();
+                    break;
+                case S:
+                    j2.deplacerEnBas(scene.getWidth());
+                    break;
+                case D:
+                    j2.deplacerADroite(scene.getWidth());
+                    break;
 
             }
-            if (j1.estEnCollision(j2))
+            if (j1.estEnCollision(j2)){
                 System.out.println("Collision....");
+                //stop le jeu
+                scene.setOnKeyPressed(null);
+            }
         });
     }
 
